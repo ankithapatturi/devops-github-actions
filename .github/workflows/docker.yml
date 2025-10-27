@@ -31,11 +31,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t $ECR_REPOSITORY .
-        docker tag $ECR_REPOSITORY:latest ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:latest
+        docker build -t ankitha .
+        docker tag ankitha:latest 043088170491.dkr.ecr.us-east-1.amazonaws.com/ankitha:latest
     - name: Push Docker image to ECR
       run: |
-        docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:latest
+        docker push 043088170491.dkr.ecr.us-east-1.amazonaws.com/ankitha:latest
 
     - name: Force ECS service to deploy new image
       run: |
