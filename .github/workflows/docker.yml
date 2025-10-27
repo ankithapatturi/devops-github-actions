@@ -27,15 +27,15 @@ jobs:
 
     - name: Log in to Amazon ECR
       id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+      uses: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 043088170491.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Build Docker image
       run: |
-        docker build -t ankitha .
-        docker tag ankitha:latest 043088170491.dkr.ecr.us-east-1.amazonaws.com/ankitha:latest
+        docker build -t ststic-web .
+        docker tag ststic-web:latest 043088170491.dkr.ecr.us-east-1.amazonaws.com/ststic-web:latest
     - name: Push Docker image to ECR
       run: |
-        docker push 043088170491.dkr.ecr.us-east-1.amazonaws.com/ankitha:latest
+        docker push 043088170491.dkr.ecr.us-east-1.amazonaws.com/ststic-web:latest
 
     - name: Force ECS service to deploy new image
       run: |
